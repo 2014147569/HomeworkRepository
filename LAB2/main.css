@@ -1,0 +1,40 @@
+﻿/*External Style Sheet*/
+h1
+{
+    font-family:helvetica, sans-serif;
+    font-size:20px;
+    text-align:left;
+}
+nav ul li
+{
+    list-style-type:none;
+    display:inline;
+}
+nav ul li a {
+    color: orangered;
+    text-decoration: none;
+}
+.main_inputs {
+    font-family: "맑은 고딕", 돋움, 굴림;
+}
+.buttons ul li {
+    list-style-type: none;
+    display: inline;
+}
+.submit_button 
+{
+    border: solid;
+    background-color: aqua;
+    padding:0px;
+    margin:10px;
+    width:60px;
+    height:25px;
+}
+.cancel_button {
+    border: solid;
+    background-color: royalblue;
+    padding: 0px;
+    margin: 10px;
+    width: 60px;
+    height: 25px;
+}
