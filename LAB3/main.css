@@ -1,0 +1,108 @@
+﻿/*External Style Sheet*/
+body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+h1 {
+    font-family: helvetica, sans-serif;
+    font-size: 30px;
+    text-align: left;
+}
+
+.container {
+    position: absolute;
+    width: 1020px;
+    height: 100%;
+    left: 50%;
+    margin: 0px 0px 0px -510px;
+}
+
+.h1_box {
+    font-family: helvetica, sans-serif;
+    text-align: left;
+    width: 440px;
+    position: relative;
+    animation: movingimage linear 2s 0s 1;
+}
+
+@keyframes movingimage {
+    0% {
+        left: 1020px;
+    }
+
+    100% {
+        left: 0px;
+    }
+}
+
+nav ul li {
+    list-style-type: none;
+    display: inline;
+}
+
+.my_box_parent {
+    width: 90%;
+    margin: 5px auto;
+    display: flex;
+}
+
+.my_box {
+    border: 1px solid;
+    flex: 1;
+    width: 500px;
+    height: 500px;
+    padding: 1px;
+    margin: 1px;
+    box-sizing: border-box;
+}
+
+img {
+    transition-duration: 2s;
+    transition-property: width, height;
+}
+
+    img:hover {
+        width: 100%;
+        height: 100%;
+    }
+
+.intro {
+    column-count: 2;
+    column-gap: 10px;
+    column-rule-style: outset;
+    column-rule-width: thin;
+}
+
+nav ul li a {
+    color: orangered;
+    text-decoration: none;
+}
+
+.main_inputs {
+    font-family: "맑은 고딕", 돋움, 굴림;
+}
+
+.buttons ul li {
+    list-style-type: none;
+    display: inline;
+}
+
+.submit_button {
+    border: solid;
+    background-color: aqua;
+    padding: 0px;
+    margin: 10px;
+    width: 60px;
+    height: 25px;
+}
+
+.cancel_button {
+    border: solid;
+    background-color: royalblue;
+    padding: 0px;
+    margin: 10px;
+    width: 60px;
+    height: 25px;
+}
