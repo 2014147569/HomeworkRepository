@@ -11,6 +11,8 @@ fetch('products.json').then(function(response) {
     console.log('Fetch problem: ' + err.message);
 });
 
+
+
   // sets up the app logic, declares required variables, contains all the other functions
 function initialize(products) {
     // grab the UI elements that we need to manipulate
@@ -155,21 +157,29 @@ function initialize(products) {
     function showProduct(objectURL, product) {
         // create <section>, <h2>, <p>, and <img> elements
         const section = document.createElement('section');
+        const showbutton = document.createElement('button');
         const heading = document.createElement('h2');
         const para = document.createElement('p');
         const image = document.createElement('img');
     
         // give the <section> a classname equal to the product "type" property so it will display the correct icon
         section.setAttribute('class', product.type);
-    
+        showbutton.textContent = 'click';
+        showbutton.id = 'bt_' + product.name;
+        document.getElementById('bt_' + product.name).addEventListener("click", () => {document.querySelector('hd_' + product.name).visibility = 'visible'; document.querySelector('para_' + product.name).visibility = 'visible';});
+
         // Give the <h2> textContent equal to the product "name" property, but with the first character
         // replaced with the uppercase version of the first character
         heading.textContent = product.name.replace(product.name.charAt(0), product.name.charAt(0).toUpperCase());
+        heading.id = 'hd_' + product.name;
+        heading.attributes('visibility', 'hidden');
     
         // Give the <p> textContent equal to the product "price" property, with a $ sign in front
         // toFixed(2) is used to fix the price at 2 decimal places, so for example 1.40 is displayed
         // as 1.40, not 1.4.
-        para.textContent = '$' + product.price.toFixed(2);
+        para.textContent = '$' + product.price.toFixed(1);
+        para.id = 'para_' + product.name;
+        para.attributes('visibility', 'hidden');
     
         // Set the src of the <img> element to the ObjectURL, and the alt to the product "name" property
         image.src = objectURL;
@@ -177,8 +187,11 @@ function initialize(products) {
     
         // append the elements to the DOM as appropriate, to add the product to the UI
         main.appendChild(section);
+        section.appendChild(showbutton);
         section.appendChild(heading);
         section.appendChild(para);
         section.appendChild(image);
+
+        
     }
 }
