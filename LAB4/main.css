@@ -92,6 +92,8 @@ section img {
     bottom: 0px;
 }
 
+img {height: 70%;  top: 25%;  left: 40%;}
+
 section p {
     color: yellow;
     background: black;
