@@ -7,10 +7,10 @@ fetch('products.json').then(function(response) {
 }).then(function(json) {
     let products = json;
     initialize(products);
+    listen(products);
 }).catch(function(err) {
     console.log('Fetch problem: ' + err.message);
 });
-
 
 
   // sets up the app logic, declares required variables, contains all the other functions
@@ -166,7 +166,7 @@ function initialize(products) {
         section.setAttribute('class', product.type);
         showbutton.textContent = 'click';
         showbutton.id = 'bt_' + product.name;
-        document.getElementById('bt_' + product.name).addEventListener("click", () => {document.querySelector('hd_' + product.name).visibility = 'visible'; document.querySelector('para_' + product.name).visibility = 'visible';});
+        
 
         // Give the <h2> textContent equal to the product "name" property, but with the first character
         // replaced with the uppercase version of the first character
@@ -194,4 +194,9 @@ function initialize(products) {
 
         
     }
+    
 }
+function listen(products){
+    document.getElementById('bt_' + products["name"]).addEventListener("click", () => {document.querySelector('hd_' + products["name"]).visibility = 'visible'; document.querySelector('para_' + products["name"]).visibility = 'visible';});
+}
+    
