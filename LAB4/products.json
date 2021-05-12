@@ -1,0 +1,74 @@
+[
+    {
+        "name" : "veuve clicquot",
+        "price" : 65,
+        "image" : "sparkling_veuve clicquot.png",
+        "type" : "sparkling"
+    },
+    {
+        "name" : "charles orban",
+        "price" : 70,
+        "image" : "sparkling_charles orban.png",
+        "type" : "sparkling"
+    },
+    {
+        "name" : "bohigas",
+        "price" : 10,
+        "image" : "sparkling_bohigas.png",
+        "type" : "sparkling"
+    },
+    {
+        "name" : "jacques selosse substance",
+        "price" : 200,
+        "image" : "sparkling_substance.png",
+        "type" : "sparkling"
+    },
+    {
+        "name" : "fleurie",
+        "price" : 80,
+        "image" : "red_fleurie.png",
+        "type" : "red"
+    },
+    {
+        "name" : "kilikanoon oracle",
+        "price" : 90,
+        "image" : "red_kilikanoon oracle.png",
+        "type" : "red"
+    },
+    {
+        "name" : "marchese antinori",
+        "price" : 80,
+        "image" : "red_marchese antinori.png",
+        "type" : "red"
+    },
+    {
+        "name" : "prieure roch le clos des corvees",
+        "price" : 1600,
+        "image" : "red_roch.png",
+        "type" : "red"
+    },
+    {
+        "name" : "santa cristina pinot grigio",
+        "price" : 8,
+        "image" : "white_santa.png",
+        "type" : "white"
+    },
+    {
+        "name" : "domaine leflaive puligny montrachet",
+        "price" : 200,
+        "image" : "white_leflaive.png",
+        "type" : "white"
+    },
+    {
+        "name" : "donnhoff kabinett",
+        "price" : 40,
+        "image" : "white_donnhoff kabinett.png",
+        "type" : "white"
+    },
+    {
+        "name" : "william fevre chablis grand cru les clos",
+        "price" : 150,
+        "image" : "white_chablis.png",
+        "type" : "white"
+    }
+]

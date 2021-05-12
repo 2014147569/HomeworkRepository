@@ -1,0 +1,51 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title> login </title>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+</head>
+    <body>
+        <header>
+            <h1>
+                Welcome to INTERNET-PROGRAMMING SHOP
+            </h1>
+            <nav>
+                <ul>
+                    <li><a href="login.html">로그인</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="login_inputs">
+            <form method="get">
+                <fieldset>
+                    <legend>회원정보(필수)</legend>
+                    <ul>                       
+                        <li>
+                            <label for="userID">유저 ID :</label>
+                            <input name="userID" type="text" id="userID" autofocus required />
+                        </li>
+                        <li>
+                            <label for="password">비밀번호 :</label>
+                            <input name="password" type="password" id="password" autocomplete="off" autofocus required/>
+                        </li>
+                    </ul>
+                    
+                </fieldset>
+
+                <div class="buttons">
+                    <ul>
+                        <li>
+                            <input type="submit" value="로그인" title="로그인" />
+                        </li>
+                        <li>
+                            <input type="button" value="회원가입" title="회원가입" onClick="location.href='signup.html'" />
+                        </li>
+                    </ul>                   
+                    
+                </div>
+
+            </form>
+        </div>       
+    </body>
+</html>

@@ -1,0 +1,76 @@
+﻿<!doctype html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <title> signup </title>
+        <link rel="stylesheet" type="text/css" href="main.css" />
+    </head>
+    <body>
+        <header>
+            <h1>
+                Welcome to INTERNET-PROGRAMMING SHOP
+            </h1>
+            <nav>
+                <ul>
+                    <li><a href="login.html">로그인</a></li>
+                    <li><a href="signup.html">회원가입</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class=" main_inputs">
+            <form method="post">
+                <fieldset>
+                    <legend>개인정보(필수)</legend>
+                    <ul>
+                        <li>
+                            <label for="name">이름 :</label>
+                            <input name="name" type="text" id="name" placeholder="이름을 입력하세요" autocomplete="name" autofocus required />
+                        </li>
+                        <li>
+                            <label for="birthday">생일 :</label>
+                            <input name="birthday" type="date" id="birthday" required />
+                        </li>
+                        <li>
+                            <label for="grade">학년 :</label>
+                            <select size="1">
+                                <option value="first" selected>1</option>
+                                <option value="second">2</option>
+                                <option value="third">3</option>
+                                <option value="fourth">4</option>
+                                <option value="fifth">5</option>
+                                <option value="sixth">6</option>
+                                <option value="seventh">7</option>
+                                <option value="eighth">8</option>
+                                <option value="ninth">9</option>
+                                <option value="tenth">10</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label for="mobile">휴대폰번호 :</label>
+                            <input name="mobile" type="tel" id="mobile" placeholder="###-####-####" pattern="\d{3}-\d{4}-\d{4}" autofocus required />
+                        </li>
+                        <li>
+                            <label for="userID">유저 ID :</label>
+                            <input name="userID" type="text" id="userID" autofocus required />
+                        </li>
+                        <li>
+                            <label for="password">비밀번호 :</label>
+                            <input name="password" type="password" id="password" autocomplete="off" autofocus required/>
+                        </li>
+                        <li>
+                            <label for="re-password">비밀번호 확인 :</label>
+                            <input name="re-password" type="password" id="re-password" autocomplete="off" autofocus required/>
+                        </li>
+                    </ul>
+                    
+                </fieldset>
+
+                <div class="buttons">
+                    <button type="submit" class="submit_button">Signup</button>
+                    <button type="reset" class="cancel_button">Cancel</button>
+                </div>
+
+            </form>
+        </div>       
+    </body>
+</html>
