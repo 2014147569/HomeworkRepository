@@ -13,15 +13,15 @@ fetch('products.json').then(function(response) {
     initialize(products);    
 }).catch(function(err) {
     console.log('Fetch problem: ' + err.message);
-}).then(function(){
+}).then(setTimeout(function(){
     window.onscroll = function(){
             if((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight){
                 
                 //console.log("---------------hi--------------");
                 //console.log(window.innerHeight);
                 //console.log(window.scrollY);
-                //console.log(window.innerHeight+window.scrollY);
-                //console.log(document.documentElement.scrollHeight);
+                console.log(window.innerHeight+window.scrollY);
+                console.log(document.documentElement.scrollHeight);
                 //console.log(finalGroup_);
                 //console.log(typeof(finalGroup_));
                 if(scrcounter==0){
@@ -51,7 +51,7 @@ fetch('products.json').then(function(response) {
             }
             
         };
-});
+},200));
 
 
 
