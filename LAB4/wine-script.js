@@ -2,16 +2,58 @@
 // report any errors that occur in the fetch operation
 // once the products have been successfully loaded and formatted as a JSON object
 // using response.json(), run the initialize() function
-let prod;
+let finalGroup_;
+let counter = 0;
+let scrcounter =-1;
+
 fetch('products.json').then(function(response) {
     return response.json();
 }).then(function(json) {
     let products = json;
-    initialize(products);
-    //listen(products);
+    initialize(products);    
 }).catch(function(err) {
     console.log('Fetch problem: ' + err.message);
+}).then(function(){
+    window.onscroll = function(){
+            if((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight){
+                
+                //console.log("---------------hi--------------");
+                //console.log(window.innerHeight);
+                //console.log(window.scrollY);
+                //console.log(window.innerHeight+window.scrollY);
+                //console.log(document.documentElement.scrollHeight);
+                //console.log(finalGroup_);
+                //console.log(typeof(finalGroup_));
+                if(scrcounter==0){
+                    scrollpage(finalGroup_.slice(counter,counter+2));
+                    scrcounter++;
+                    //console.log(scrcounter);
+                }
+                else if(scrcounter==1){
+                    scrollpage(finalGroup_.slice(counter,counter+2));
+                    scrcounter++;
+                    //console.log(scrcounter);
+                }
+                else if(scrcounter==2){
+                    scrollpage(finalGroup_.slice(counter,));
+                    scrcounter++;
+                    //console.log(scrcounter);
+                }
+
+                if(counter == 12){
+                    finalGroup = undefined;
+                    counter = 0;
+                    scrcounter=-1;
+                    //console.log("------");
+                    //console.log(scrcounter);
+                    return;
+                }
+            }
+            
+        };
 });
+
+
 
 
   // sets up the app logic, declares required variables, contains all the other functions
@@ -37,6 +79,7 @@ function initialize(products) {
     // To start with, set finalGroup to equal the entire products database
     // then run updateDisplay(), so ALL products are displayed initially.
     finalGroup = products;
+    finalGroup_ = finalGroup;
     updateDisplay();
 
     // Set both to equal an empty array, in time for searches to be run
@@ -98,6 +141,8 @@ function initialize(products) {
       // array — we don't want to filter the products further — then run updateDisplay().
         if(searchTerm.value.trim() === '') {
             finalGroup = categoryGroup;
+            finalGroup_ = finalGroup;
+
             updateDisplay();
         } else {
             // Make sure the search term is converted to lower case before comparison. We've kept the
@@ -107,7 +152,7 @@ function initialize(products) {
             // (if the indexOf() result doesn't return -1, it means it is) — if it is, then push the product
             // onto the finalGroup array
             for(let i = 0; i < categoryGroup.length ; i++) {
-                if(categoryGroup[i].name.indexOf(lowerCaseSearchTerm) !== -1) {
+                if(categoryGroup[i].type.indexOf(lowerCaseSearchTerm) !== -1) {
                     finalGroup.push(categoryGroup[i]);
                 }
             }
@@ -129,11 +174,38 @@ function initialize(products) {
             main.appendChild(para);
         // for each product we want to display, pass its product object to fetchBlob()
         } else {
+            counter=0;
+            if(finalGroup.length >=6){
+                for(let i = 0; i < 6; i++) {
+                fetchBlob(finalGroup[i]);
+                counter++;
+                }
+            }
+            else{
+                for(let i = 0; i < finalGroup.length; i++) {
+                    fetchBlob(finalGroup[i]);
+                    }
+            }
+            
+            if(finalGroup.length > 6){
+                scrcounter=0;
+            }
+            
+    }
+
+/*    function infscroll(finalGroup){
+        window.onscroll = () => {
+                if(window.innerHeight + window.scrollY >= document.body.offsetHeight){
+                    
+                }
+            }
+
+
             for(let i = 0; i < finalGroup.length; i++) {
                 fetchBlob(finalGroup[i]);
             }
         }
-    }
+    }*/
 
     // fetchBlob uses fetch to retrieve the image for that product, and then sends the
     // resulting image display URL and product object on to showProduct() to finally
@@ -173,31 +245,129 @@ function initialize(products) {
         // replaced with the uppercase version of the first character
         heading.textContent = product.name.replace(product.name.charAt(0), product.name.charAt(0).toUpperCase());
         heading.id = 'hd_' + product.name;
-        heading.attributes('visibility', 'hidden');
+        heading.style.visibility='hidden';
     
         // Give the <p> textContent equal to the product "price" property, with a $ sign in front
         // toFixed(2) is used to fix the price at 2 decimal places, so for example 1.40 is displayed
         // as 1.40, not 1.4.
         para.textContent = '$' + product.price.toFixed(1);
         para.id = 'para_' + product.name;
-        para.attributes('visibility', 'hidden');
+        para.style.visibility='hidden';
     
         // Set the src of the <img> element to the ObjectURL, and the alt to the product "name" property
         image.src = objectURL;
         image.alt = product.name;
     
         // append the elements to the DOM as appropriate, to add the product to the UI
+        
         main.appendChild(section);
         section.appendChild(showbutton);
         section.appendChild(heading);
         section.appendChild(para);
         section.appendChild(image);
 
+        listen(product.name);
+
         
     }
-    
+
+    function listen(name){
+    document.getElementById('bt_' + name).addEventListener("click", () => {document.getElementById('hd_' + name).style.visibility='visible'; document.getElementById('para_' + name).style.visibility='visible'; });
+    }
 }
-function listen(products){
-    document.getElementById('bt_' + products["name"]).addEventListener("click", () => {document.querySelector('hd_' + products["name"]).visibility = 'visible'; document.querySelector('para_' + products["name"]).visibility = 'visible';});
+
 }
+
+function scrollpage(finalGroup){
+    for(let i = 0; i < 2; i++) {
+        counter++;
+        console.log(counter);
+        //console.log(finalGroup[i]);
+        fetchBlob(finalGroup[i]);
+    }
+    /* if(counter == 6){
+        for(let i = 6; i < 9; i++) {
+            counter++;
+            console.log(counter);
+            console.log(finalGroup[i]);
+            fetchBlob(finalGroup[i]);}
+
+    }
+    if(counter == 9){
+        for(let i = 9; i < 12; i++) {
+            counter++;
+            console.log(counter);
+            console.log(finalGroup[i]);
+            fetchBlob(finalGroup[i]);}
+
+    }*/
+
+    // fetchBlob uses fetch to retrieve the image for that product, and then sends the
+    // resulting image display URL and product object on to showProduct() to finally
+    // display it
+    function fetchBlob(product) {
+        // construct the URL path to the image file from the product.image property
+        let url = 'images/' + product.image;
+        // Use fetch to fetch the image, and convert the resulting response to a blob
+        // Again, if any errors occur we report them in the console.
+        fetch(url).then(function(response) {
+            return response.blob();
+        }).then(function(blob) {
+            // Convert the blob to an object URL — this is basically an temporary internal URL
+            // that points to an object stored inside the browser
+            let objectURL = URL.createObjectURL(blob);
+            // invoke showProduct
+            showProduct(objectURL, product);
+        });
+    }
+
+    // Display a product inside the <main> element
+    function showProduct(objectURL, product) {
+        // create <section>, <h2>, <p>, and <img> elements
+        const section = document.createElement('section');
+        const showbutton = document.createElement('button');
+        const heading = document.createElement('h2');
+        const para = document.createElement('p');
+        const image = document.createElement('img');
     
+        // give the <section> a classname equal to the product "type" property so it will display the correct icon
+        section.setAttribute('class', product.type);
+        showbutton.textContent = 'click';
+        showbutton.id = 'bt_' + product.name;
+        
+
+        // Give the <h2> textContent equal to the product "name" property, but with the first character
+        // replaced with the uppercase version of the first character
+        heading.textContent = product.name.replace(product.name.charAt(0), product.name.charAt(0).toUpperCase());
+        heading.id = 'hd_' + product.name;
+        heading.style.visibility='hidden';
+    
+        // Give the <p> textContent equal to the product "price" property, with a $ sign in front
+        // toFixed(2) is used to fix the price at 2 decimal places, so for example 1.40 is displayed
+        // as 1.40, not 1.4.
+        para.textContent = '$' + product.price.toFixed(1);
+        para.id = 'para_' + product.name;
+        para.style.visibility='hidden';
+    
+        // Set the src of the <img> element to the ObjectURL, and the alt to the product "name" property
+        image.src = objectURL;
+        image.alt = product.name;
+    
+        // append the elements to the DOM as appropriate, to add the product to the UI
+        
+        let main = document.getElementsByTagName('main')[0];
+        main.appendChild(section);
+        section.appendChild(showbutton);
+        section.appendChild(heading);
+        section.appendChild(para);
+        section.appendChild(image);
+
+        listen(product.name);
+
+        
+    }
+
+    function listen(name){
+    document.getElementById('bt_' + name).addEventListener("click", () => {document.getElementById('hd_' + name).style.visibility='visible'; document.getElementById('para_' + name).style.visibility='visible'; });
+    }
+}

@@ -14,8 +14,10 @@ h1 {
 h2 {
     font-family: helvetica, sans-serif;
     font-size: 20px;
-    text-align: left;
-    color: rgb(161, 101, 60);
+    text-align:right;
+    color: black;
+    padding : 1px;
+    border:1px solid black;
 }
 
 .container {
@@ -89,7 +91,7 @@ section {
     margin: 5px;
     background-color: rgb(161, 101, 60);
     position: relative;
-    height: 215px;
+    height: 300px;
 }
 
 section img {
@@ -114,6 +116,10 @@ section p {
     right: 10px;
     bottom: -6px;
     z-index: 2000;
+}
+
+section button{
+    margin : 0px;
 }
 
 .intro {
